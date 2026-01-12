@@ -1,0 +1,185 @@
+/* Container & Card */
+.app-container { background: #f5f7fa; min-height: 100vh; display: flex; justify-content: center; padding-top: 40px; font-family: 'Segoe UI', sans-serif; }
+.todo-card { background: white; width: 450px; border-radius: 40px; padding: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.06); position: relative; }
+
+/* Search & Tabs */
+.search-bar { display: flex; align-items: center; background: #f1f3f6; padding: 12px 20px; border-radius: 15px; margin-bottom: 25px; }
+.search-bar input { border: none; background: transparent; outline: none; margin-left: 10px; width: 100%; font-size: 14px; }
+.filter-tabs { display: flex; gap: 8px; margin-bottom: 25px; background: #f1f3f6; padding: 5px; border-radius: 16px; }
+.filter-tabs button { flex: 1; border: none; background: transparent; padding: 8px; border-radius: 12px; font-weight: 600; color: #94a3b8; font-size: 10px; cursor: pointer; transition: 0.3s; }
+.filter-tabs button.active { background: white; color: #3b82f6; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+/* Task Items & Custom Checkbox */
+.task-item-premium { display: flex; align-items: center; padding: 18px 24px; background: #f8fafc; border-radius: 20px; margin-bottom: 12px; cursor: pointer; transition: 0.2s; }
+.task-item-premium:hover { background: #ffffff; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
+.custom-check { width: 22px; height: 22px; border: 2px solid #cbd5e1; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; transition: 0.2s; }
+.custom-check.checked { background: #10b981; border-color: #10b981; }
+.strikethrough { text-decoration: line-through; color: #cbd5e1; }
+
+/* Modal & Input Styles */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.1); backdrop-filter: blur(15px); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.modal-card { background: #f0f7ff; width: 420px; border-radius: 30px; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+.field { margin-bottom: 20px; }
+.field label { display: block; font-weight: 700; color: #1e3a8a; margin-bottom: 8px; }
+.input-inner { display: flex; align-items: center; background: white; border: 1px solid #e2e8f0; padding: 10px 15px; border-radius: 10px; }
+.input-inner input, .input-inner textarea { border: none; outline: none; width: 100%; margin-left: 10px; font-family: inherit; }
+
+/* Date Selection Styles */
+input[type="datetime-local"] { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0; font-family: inherit; color: #475569; }
+
+/* Footer & Buttons */
+.footer-btns { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+.btn-save { background: #1e3a8a; color: white; border: none; padding: 10px 30px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+.btn-del { background: #1e3a8a; color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; }
+
+/* --- Các class giữ nguyên từ bản trước --- */
+.app-container { background: #f5f7fa; min-height: 100vh; display: flex; justify-content: center; padding-top: 40px; font-family: 'Segoe UI', sans-serif; }
+.todo-card { background: white; width: 450px; border-radius: 40px; padding: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.06); position: relative; }
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.modal-card { background: #f0f7ff; width: 460px; border-radius: 30px; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); border: 1px solid white; }
+
+/* --- Phần in đậm và in mờ mới --- */
+.task-title-bold {
+  display: block;
+  font-weight: 700;
+  font-size: 15px;
+  color: #1e293b;
+  margin-bottom: 2px;
+}
+.task-time-faded {
+  font-size: 12px;
+  color: #94a3b8; /* Màu xám mờ */
+  display: flex;
+  align-items: center;
+}
+
+/* --- Tinh chỉnh input date --- */
+input[type="datetime-local"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+/* Các trạng thái còn lại */
+.task-item-premium.completed .task-title-bold { text-decoration: line-through; color: #cbd5e1; }
+.error-text, .error-text-bottom { color: #ef4444; font-size: 11px; font-weight: 600; margin-top: 4px; display: block; }
+
+
+/* ... (Giữ nguyên các CSS cũ) ... */
+
+/* Khi checkbox bị vô hiệu hóa do quá hạn */
+.custom-check.disabled {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  cursor: not-allowed;
+}
+
+/* Màu chữ cho tiêu đề quá hạn */
+.text-overdue {
+  color: #ef4444 !important;
+}
+
+/* Hiệu ứng rung nhẹ khi click vào item quá hạn (tùy chọn) */
+.task-item-premium.out-of-date:active {
+  animation: shake 0.2s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+/* Đảm bảo thời gian mờ in đúng chuẩn */
+.task-time-faded {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 4px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.task-title-bold {
+  font-size: 16px;
+  letter-spacing: -0.3px;
+}
+
+/* Nút FAB (Floating Action Button) - Tạo nhiệm vụ mới */
+.fab-add {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 20px; /* Bo góc kiểu Squircle của Apple */
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  
+  /* Đổ bóng đa lớp tạo độ nổi */
+  box-shadow: 0 10px 20px rgba(29, 78, 216, 0.3), 
+              inset 0 2px 5px rgba(255, 255, 255, 0.3);
+  
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 10;
+}
+
+.fab-add:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(29, 78, 216, 0.4);
+  filter: brightness(1.1);
+}
+
+.fab-add:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* Thêm hiệu ứng phát sáng nhẹ xung quanh */
+.fab-add::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.fab-add:hover::after {
+  opacity: 0.5;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 14px 20px;
+  border-radius: 18px;
+  margin-bottom: 25px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus-within {
+  background: white;
+  border-color: #3b82f6;
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.08);
+}
+
+.search-bar input {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.search-bar input::placeholder {
+  color: #94a3b8;
+}
+
