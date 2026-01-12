@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import * as taskApi from './api/taskApi';
+import * as taskApi from './api/taskApi.js';
 import TaskItem from './components/TaskItem';
 import TaskInput from './components/TaskInput';
 import { Plus, Search } from 'lucide-react';

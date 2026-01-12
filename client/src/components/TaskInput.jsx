@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as taskApi from '../api/taskApi';
+import * as taskApi from '../api/taskApi.js';
 import { toast } from 'react-toastify';
 import { Trash2 } from 'lucide-react';
 
