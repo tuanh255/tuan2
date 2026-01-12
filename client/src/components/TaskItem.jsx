@@ -15,21 +15,20 @@ const TaskItem = ({ task, onToggleComplete, onClick }) => {
 
   return (
     <div className={`task-item-premium ${task.status}`} onClick={onClick}>
-      {/* Cập nhật logic hiển thị hình tròn */}
-      <div 
-        className={`custom-check ${task.status === 'completed' ? 'checked' : ''} ${task.status === 'out of date' ? 'disabled' : ''}`} 
+      <div
+        className={`custom-check ${task.status === 'completed' ? 'checked' : ''} ${task.status === 'out of date' ? 'disabled' : ''}`}
         onClick={handleCheck}
       >
         {task.status === 'completed' && <Check size={14} strokeWidth={4} color="white" />}
         {task.status === 'out of date' && <Lock size={12} color="#fca5a5" />}
       </div>
-      
+
       <div className="task-body">
         <strong className={`task-title-bold ${task.status === 'completed' ? 'strikethrough' : ''} ${task.status === 'out of date' ? 'text-overdue' : ''}`}>
           {task.title}
         </strong>
         <div className="task-time-faded">
-          <Calendar size={12} style={{marginRight: '4px'}}/>
+          <Calendar size={12} style={{ marginRight: '4px' }} />
           {formatDate(task.startDate)} — {formatDate(task.endDate)}
         </div>
       </div>
