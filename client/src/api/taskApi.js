@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = "https://tuan2-p2ud.onrender.com/tasks";
+const API_URL = "https://tuan2-p2ud.onrender.com/api/todos";
 export const getTasks = (search, status) => {
     const url = `${API_URL}?search=${search}${status !== 'all' ? '&status=' + status : ''}`;
     return axios.get(url);
