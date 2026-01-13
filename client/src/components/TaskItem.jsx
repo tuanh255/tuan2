@@ -1,5 +1,7 @@
 import React from 'react';
 import { Check, Calendar, Lock } from 'lucide-react';
+// 1. Import hàm format đã tạo ở utils
+import { formatToVN } from '../utils/dayjs'; 
 
 const TaskItem = ({ task, onToggleComplete, onClick }) => {
   const handleCheck = (e) => {
@@ -7,11 +9,8 @@ const TaskItem = ({ task, onToggleComplete, onClick }) => {
     onToggleComplete(task._id, task.status);
   };
 
-  const formatDate = (dateStr) => {
-    if (!dateStr) return "";
-    const d = new Date(dateStr);
-    return `${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')} ${d.toLocaleDateString('vi-VN')}`;
-  };
+  // 2. Xóa hàm formatDate cũ dùng Date thuần đi và thay thế bằng dayjs
+  // (Chúng ta sẽ gọi trực tiếp formatToVN ở dưới phần render)
 
   return (
     <div className={`task-item-premium ${task.status}`} onClick={onClick}>
@@ -29,7 +28,8 @@ const TaskItem = ({ task, onToggleComplete, onClick }) => {
         </strong>
         <div className="task-time-faded">
           <Calendar size={12} style={{ marginRight: '4px' }} />
-          {formatDate(task.startDate)} — {formatDate(task.endDate)}
+          {/* 3. Sử dụng hàm formatToVN để hiển thị đúng giờ +7 */}
+          {formatToVN(task.startDate)} — {formatToVN(task.endDate)}
         </div>
       </div>
     </div>
